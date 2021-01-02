@@ -18,7 +18,7 @@ open import Web.Semantic.Util using
 module Web.Semantic.DL.ABox.Model {Σ : Signature} where
 
 infix 2 _⊨a_ _⊨b_
-infixr 5 _,_
+infixr 4 _,_
 
 _⟦_⟧₀ : ∀ {X} (I : Interp Σ X) → X → (Δ ⌊ I ⌋)
 I ⟦ x ⟧₀ = ind I x
