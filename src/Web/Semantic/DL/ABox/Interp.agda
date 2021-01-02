@@ -10,25 +10,40 @@ module Web.Semantic.DL.ABox.Interp where
 infixr 4 _,_
 infixr 5 _*_ 
 
+{-
+   An interpretation of a signature Σ (made of concept and role names) 
+   over a set of variables/names taken from X
+   In RDF the members of X are  IRIs, BNodes or Literals.
+-}
 data Interp (Σ : Signature) (X : Set) : Set₁ where
-  _,_ : ∀ I → (X → Δ {Σ} I) → (Interp Σ X)
+  -- I is a full Interpreation (Interp')
+  -- The function X → Δ {Σ} I interprets the variables in X
+  _,_ : ∀ I → (X → Δ {Σ} I) → (Interp Σ X)  
 
+-- extract the Interpretation, forgetting the interpretation of variables
 ⌊_⌋ : ∀ {Σ X} → Interp Σ X → Interp′ Σ
 ⌊ I , i ⌋ = I
 
+-- return the individuals function for an interpretation
 ind : ∀ {Σ X} → (I : Interp Σ X) → X → Δ ⌊ I ⌋
 ind (I , i) = i
 
+-- paired individuals function for an interpretation, useful for relations/roles
 ind² : ∀ {Σ X} → (I : Interp Σ X) → (X × X) → (Δ ⌊ I ⌋ × Δ ⌊ I ⌋)
 ind² I (x , y) = (ind I x , ind I y)
 
+-- why * ?
 _*_ : ∀ {Σ X Y} → (Y → X) → Interp Σ X → Interp Σ Y
-f * I = (⌊ I ⌋ , λ x → ind I (f x))
+f * I = (⌊ I ⌋ , λ y → ind I (f y))
 
+-- Empty interpretation
 emp : ∀ {Σ} → Interp Σ False
 emp = (emp′ , id)
 
 data Surjective {Σ X} (I : Interp Σ X) : Set where
+  -- y is a variable i.e. y : X 
+  -- (ind I y), x : Δ
+  -- all elements x of the domain Δ, have a variable y that it is an interpretation of   
   surj : (∀ x → ∃ λ y → ⌊ I ⌋ ⊨ x ≈ ind I y) → (I ∈ Surjective)
 
 ind⁻¹ : ∀ {Σ X} {I : Interp Σ X} → (I ∈ Surjective) → (Δ ⌊ I ⌋ → X)

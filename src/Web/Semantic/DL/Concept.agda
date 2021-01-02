@@ -8,6 +8,7 @@ infixr 8 ∃⟨_⟩_
 infixl 7 _⊓_
 infixl 6 _⊔_ 
 
+-- Concept grammar
 data Concept (Σ : Signature) : Set where
   ⟨_⟩ : (c : CN Σ) → Concept Σ
   ¬⟨_⟩ : (c : CN Σ) → Concept Σ

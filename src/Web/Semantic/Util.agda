@@ -3,7 +3,7 @@
 open import Data.Bool using ( Bool ; true ; false ; _∧_ )
 open import Data.Empty using ()
 open import Data.List using ( List ; [] ; _∷_ ; _++_ ; map )
-open import Data.List.Any using ( here ; there )
+open import Data.List.Relation.Unary.Any using ( here ; there )
 open import Data.List.Membership.Propositional using ()
 open import Data.Sum using ( _⊎_ ; inj₁ ; inj₂ )
 open import Data.Product using ( ∃ ; ∄ ; _×_ ; _,_ )

@@ -7,6 +7,8 @@ module Web.Semantic.DL.FOL where
 
 infixr 4 _∧_
 
+-- should a Formula contain the Domain? 
+-- Or should Δ not rather be the set of variables elsewhere named X ? 
 data Formula (Σ : Signature) (Δ : Set) : Set where
   true : Formula Σ Δ
   false : Formula Σ Δ
