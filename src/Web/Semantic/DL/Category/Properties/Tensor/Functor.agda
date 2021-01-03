@@ -50,22 +50,22 @@ tensor-resp-compose {A₁} {A₂} {B₁} {B₂} {C₁} {C₂} F₁ F₂ G₁ G�
 
     Iˡ₁⊨F₁ : up * left * bnodes I f ⊨a impl F₁
     Iˡ₁⊨F₁ = ⊨a-resp-≡³ 
-      (left * up * I) (on-bnode f (ind I) ∘ left ∘ up) refl (impl F₁) 
+      (left * up * I) (on-bnode {Σ} f (ind I) ∘ left ∘ up) refl (impl F₁) 
       (compose-left F₁ G₁ (up * I) (tensor-up (F₁ ∙ G₁) (F₂ ∙ G₂) I I⊨LHS))
 
     Iˡ₂⊨F₂ : down * (left * bnodes I f) ⊨a impl F₂
     Iˡ₂⊨F₂ = ⊨a-resp-≡³ 
-      (left * down * I) (on-bnode f (ind I) ∘ left ∘ down) refl (impl F₂)
+      (left * down * I) (on-bnode {Σ} f (ind I) ∘ left ∘ down) refl (impl F₂)
       (compose-left F₂ G₂ (down * I) (tensor-down (F₁ ∙ G₁) (F₂ ∙ G₂) I I⊨LHS))
 
     Iʳ₁⊨G₁ : up * (right * bnodes I f) ⊨a impl G₁
     Iʳ₁⊨G₁ = ⊨a-resp-≡³
-      (right * up * I) (on-bnode f (ind I) ∘ right ∘ up) refl (impl G₁) 
+      (right * up * I) (on-bnode {Σ} f (ind I) ∘ right ∘ up) refl (impl G₁) 
       (compose-right F₁ G₁ (up * I) (tensor-up (F₁ ∙ G₁) (F₂ ∙ G₂) I I⊨LHS))
 
     Iʳ₂⊨G₂ : down * (right * bnodes I f) ⊨a impl G₂
     Iʳ₂⊨G₂ = ⊨a-resp-≡³
-      (right * down * I) (on-bnode f (ind I) ∘ right ∘ down) refl (impl G₂) 
+      (right * down * I) (on-bnode {Σ} f (ind I) ∘ right ∘ down) refl (impl G₂) 
       (compose-right F₂ G₂ (down * I) (tensor-down (F₁ ∙ G₁) (F₂ ∙ G₂) I I⊨LHS))
 
     I⊨RHS : bnodes I f ⊨a impl ((F₁ ⟨⊗⟩ F₂) ∙ (G₁ ⟨⊗⟩ G₂))
@@ -86,22 +86,22 @@ tensor-resp-compose {A₁} {A₂} {B₁} {B₂} {C₁} {C₂} F₁ F₂ G₁ G�
 
     I₁ˡ⊨F₁ : left * up * bnodes I f ⊨a impl F₁
     I₁ˡ⊨F₁ = ⊨a-resp-≡³
-      (up * left * I) (on-bnode f (ind I) ∘ up ∘ left) refl (impl F₁)
+      (up * left * I) (on-bnode {Σ} f (ind I) ∘ up ∘ left) refl (impl F₁)
       (tensor-up F₁ F₂ (left * I) (compose-left (F₁ ⟨⊗⟩ F₂) (G₁ ⟨⊗⟩ G₂) I I⊨RHS))
 
     I₁ʳ⊨G₁ : right * up * bnodes I f ⊨a impl G₁
     I₁ʳ⊨G₁ = ⊨a-resp-≡³
-      (up * right * I) (on-bnode f (ind I) ∘ up ∘ right) refl (impl G₁)
+      (up * right * I) (on-bnode {Σ} f (ind I) ∘ up ∘ right) refl (impl G₁)
       (tensor-up G₁ G₂ (right * I) (compose-right (F₁ ⟨⊗⟩ F₂) (G₁ ⟨⊗⟩ G₂) I I⊨RHS))
 
     I₂ˡ⊨F₂ : left * down * bnodes I f ⊨a impl F₂
     I₂ˡ⊨F₂ = ⊨a-resp-≡³
-      (down * left * I) (on-bnode f (ind I) ∘ down ∘ left) refl (impl F₂)
+      (down * left * I) (on-bnode {Σ} f (ind I) ∘ down ∘ left) refl (impl F₂)
       (tensor-down F₁ F₂ (left * I) (compose-left (F₁ ⟨⊗⟩ F₂) (G₁ ⟨⊗⟩ G₂) I I⊨RHS))
 
     I₂ʳ⊨G₂ : right * down * bnodes I f ⊨a impl G₂
     I₂ʳ⊨G₂ = ⊨a-resp-≡³
-      (down * right * I) (on-bnode f (ind I) ∘ down ∘ right) refl (impl G₂)
+      (down * right * I) (on-bnode {Σ} f (ind I) ∘ down ∘ right) refl (impl G₂)
       (tensor-down G₁ G₂ (right * I) (compose-right (F₁ ⟨⊗⟩ F₂) (G₁ ⟨⊗⟩ G₂) I I⊨RHS))
     
     I⊨LHS : bnodes I f ⊨a impl ((F₁ ∙ G₁) ⟨⊗⟩ (F₂ ∙ G₂))

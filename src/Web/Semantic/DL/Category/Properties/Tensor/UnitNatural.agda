@@ -50,7 +50,7 @@ unit₁-natural {A} {B} F = (LHS⊑RHS , RHS⊑LHS) where
     f (bnode x) = ind J (inode (inj₂ x))
     f (enode v) = ind J (bnode (inode (inj₂ v)))
 
-    f✓ : ∀ x → ⌊ J ⌋ ⊨ ind J (left (down x)) ≈ on-bnode f (ind J) (right x)
+    f✓ : ∀ x → ⌊ J ⌋ ⊨ ind J (left (down x)) ≈ on-bnode {Σ} f (ind J) (right x)
     f✓ (inode x) = ≈-refl ⌊ J ⌋
     f✓ (bnode v) = ≈-refl ⌊ J ⌋
     f✓ (enode y) = wires-≈ inj₂ (proj₂ (fin B) y) 
@@ -73,7 +73,7 @@ unit₁-natural {A} {B} F = (LHS⊑RHS , RHS⊑LHS) where
     f (bnode (inj₂ y)) = ind J (enode y)
     f (enode ())
 
-    f✓ : ∀ x → ⌊ J ⌋ ⊨ ind J (right x) ≈ on-bnode f (ind J) (left (down x))
+    f✓ : ∀ x → ⌊ J ⌋ ⊨ ind J (right x) ≈ on-bnode {Σ} f (ind J) (left (down x))
     f✓ (inode x) = ≈-sym ⌊ J ⌋ (wires-≈ inj₂ (proj₂ (fin A) x) (compose-left (unit₁ A) F J J⊨RHS))
     f✓ (bnode v) = ≈-refl ⌊ J ⌋
     f✓ (enode y) = ≈-refl ⌊ J ⌋

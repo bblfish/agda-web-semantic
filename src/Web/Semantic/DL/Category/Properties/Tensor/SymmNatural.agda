@@ -48,14 +48,14 @@ symm-natural {A₁} {A₂} {B₁} {B₂} F₁ F₂ = (LHS⊑RHS , RHS⊑LHS) whe
     lemma₀ (inj₂ y) = ≈-refl ⌊ J ⌋
 
     lemma₁ : ∀ x → 
-      ⌊ J ⌋ ⊨ ind J (left (up x)) ≈ on-bnode f (ind J) (right (down x))
+      ⌊ J ⌋ ⊨ ind J (left (up x)) ≈ on-bnode {Σ} f (ind J) (right (down x))
     lemma₁ (inode x) = ≈-refl ⌊ J ⌋
     lemma₁ (bnode v) = ≈-refl ⌊ J ⌋
     lemma₁ (enode y) = wires-≈ ⊎-swap (proj₂ (fin (B₂ ⊗ B₁)) (inj₂ y)) 
       (compose-right (F₁ ⟨⊗⟩ F₂) (symm B₁ B₂) J J⊨LHS)
 
     lemma₂ : ∀ x → 
-      ⌊ J ⌋ ⊨ ind J (left (down x)) ≈ on-bnode f (ind J) (right (up x))
+      ⌊ J ⌋ ⊨ ind J (left (down x)) ≈ on-bnode {Σ} f (ind J) (right (up x))
     lemma₂ (inode x) = ≈-refl ⌊ J ⌋
     lemma₂ (bnode v) = ≈-refl ⌊ J ⌋
     lemma₂ (enode y) = wires-≈ ⊎-swap (proj₂ (fin (B₂ ⊗ B₁)) (inj₁ y))
@@ -87,7 +87,7 @@ symm-natural {A₁} {A₂} {B₁} {B₂} F₁ F₂ = (LHS⊑RHS , RHS⊑LHS) whe
     lemma₀ (inj₂ y) = ≈-refl ⌊ J ⌋
 
     lemma₁ : ∀ x →
-      ⌊ J ⌋ ⊨ ind J (right (down x)) ≈ on-bnode f (ind J) (left (up x))
+      ⌊ J ⌋ ⊨ ind J (right (down x)) ≈ on-bnode {Σ} f (ind J) (left (up x))
     lemma₁ (inode x) = ≈-sym ⌊ J ⌋
       (wires-≈ ⊎-swap (proj₂ (fin (A₂ ⊗ A₁)) (inj₂ x))
         (compose-left (symm A₁ A₂) (F₂ ⟨⊗⟩ F₁) J J⊨RHS))
@@ -95,7 +95,7 @@ symm-natural {A₁} {A₂} {B₁} {B₂} F₁ F₂ = (LHS⊑RHS , RHS⊑LHS) whe
     lemma₁ (enode y) = ≈-refl ⌊ J ⌋
 
     lemma₂ : ∀ x → 
-      ⌊ J ⌋ ⊨ ind J (right (up x)) ≈ on-bnode f (ind J) (left (down x))
+      ⌊ J ⌋ ⊨ ind J (right (up x)) ≈ on-bnode {Σ} f (ind J) (left (down x))
     lemma₂ (inode x) = ≈-sym ⌊ J ⌋
       (wires-≈ ⊎-swap (proj₂ (fin (A₂ ⊗ A₁)) (inj₁ x))
         (compose-left (symm A₁ A₂) (F₂ ⟨⊗⟩ F₁) J J⊨RHS))

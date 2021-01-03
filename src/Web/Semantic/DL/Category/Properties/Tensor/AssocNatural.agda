@@ -46,7 +46,7 @@ assoc-natural {A₁} {A₂} {A₃} {B₁} {B₂} {B₃} F₁ F₂ F₃ = (LHS⊑
 
     lemma₁ : ∀ x → 
       ⌊ J ⌋ ⊨ ind J (left (up (up x))) ≈ 
-        on-bnode f (ind J) (right (up x))
+        on-bnode {Σ} f (ind J) (right (up x))
     lemma₁ (inode x) = ≈-refl ⌊ J ⌋
     lemma₁ (bnode v) = ≈-refl ⌊ J ⌋
     lemma₁ (enode y) = wires-≈ ⊎-assoc⁻¹
@@ -55,7 +55,7 @@ assoc-natural {A₁} {A₂} {A₃} {B₁} {B₂} {B₃} F₁ F₂ F₃ = (LHS⊑
 
     lemma₂ : ∀ x → 
       ⌊ J ⌋ ⊨ ind J (left (up (down x))) ≈
-        on-bnode f (ind J) (right (down (up x)))
+        on-bnode {Σ} f (ind J) (right (down (up x)))
     lemma₂ (inode x) = ≈-refl ⌊ J ⌋
     lemma₂ (bnode v) = ≈-refl ⌊ J ⌋
     lemma₂ (enode y) = wires-≈ ⊎-assoc⁻¹
@@ -64,7 +64,7 @@ assoc-natural {A₁} {A₂} {A₃} {B₁} {B₂} {B₃} F₁ F₂ F₃ = (LHS⊑
 
     lemma₃ : ∀ x → 
       ⌊ J ⌋ ⊨ ind J (left (down x)) ≈
-        on-bnode f (ind J) (right (down (down x)))
+        on-bnode {Σ} f (ind J) (right (down (down x)))
     lemma₃ (inode x) = ≈-refl ⌊ J ⌋
     lemma₃ (bnode v) = ≈-refl ⌊ J ⌋
     lemma₃ (enode y) = wires-≈ ⊎-assoc⁻¹
@@ -104,7 +104,7 @@ assoc-natural {A₁} {A₂} {A₃} {B₁} {B₂} {B₃} F₁ F₂ F₃ = (LHS⊑
     lemma₀ (inj₂ (inj₂ y)) = ≈-refl ⌊ J ⌋
 
     lemma₁ : ∀ x → ⌊ J ⌋ ⊨ ind J (right (up x)) ≈
-      on-bnode f (ind J) (left (up (up x)))
+      on-bnode {Σ} f (ind J) (left (up (up x)))
     lemma₁ (inode x) = ≈-sym ⌊ J ⌋ (wires-≈ ⊎-assoc⁻¹ 
       (proj₂ (fin (A₁ ⊗ (A₂ ⊗ A₃))) (inj₁ x))
       (compose-left (assoc A₁ A₂ A₃) (F₁ ⟨⊗⟩ (F₂ ⟨⊗⟩ F₃)) J J⊨RHS))
@@ -112,7 +112,7 @@ assoc-natural {A₁} {A₂} {A₃} {B₁} {B₂} {B₃} F₁ F₂ F₃ = (LHS⊑
     lemma₁ (enode y) = ≈-refl ⌊ J ⌋
 
     lemma₂ : ∀ x → ⌊ J ⌋ ⊨ ind J (right (down (up x))) ≈
-      on-bnode f (ind J) (left (up (down x)))
+      on-bnode {Σ} f (ind J) (left (up (down x)))
     lemma₂ (inode x) = ≈-sym ⌊ J ⌋ (wires-≈ ⊎-assoc⁻¹ 
       (proj₂ (fin (A₁ ⊗ (A₂ ⊗ A₃))) (inj₂ (inj₁ x)))
       (compose-left (assoc A₁ A₂ A₃) (F₁ ⟨⊗⟩ (F₂ ⟨⊗⟩ F₃)) J J⊨RHS))
@@ -120,7 +120,7 @@ assoc-natural {A₁} {A₂} {A₃} {B₁} {B₂} {B₃} F₁ F₂ F₃ = (LHS⊑
     lemma₂ (enode y) = ≈-refl ⌊ J ⌋
 
     lemma₃ : ∀ x → ⌊ J ⌋ ⊨ ind J (right (down (down x))) ≈
-      on-bnode f (ind J) (left (down x))
+      on-bnode {Σ} f (ind J) (left (down x))
     lemma₃ (inode x) = ≈-sym ⌊ J ⌋ (wires-≈ ⊎-assoc⁻¹ 
       (proj₂ (fin (A₁ ⊗ (A₂ ⊗ A₃))) (inj₂ (inj₂ x)))
       (compose-left (assoc A₁ A₂ A₃) (F₁ ⟨⊗⟩ (F₂ ⟨⊗⟩ F₃)) J J⊨RHS))

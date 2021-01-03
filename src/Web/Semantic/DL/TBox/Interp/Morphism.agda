@@ -10,7 +10,6 @@ module Web.Semantic.DL.TBox.Interp.Morphism {Σ : Signature} where
 infix 2 _≲_ _≃_
 
 -- I ≲ J whenever J respects all the properties of I
-
 data _≲_ (I J : Interp Σ) : Set where
   morph :
     (f : Δ I → Δ J) →

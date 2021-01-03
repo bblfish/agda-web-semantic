@@ -87,7 +87,7 @@ pipe-exp (J , j) (K , k) (J≲K , j≲k) KB K⊨KB = K⊨KB
 ⊨b-intro-⟫ : ∀ {V₁ W₁ V₂ W₂ X Y Z} → (I : Interp Σ (X ⊕ (V₁ ⊕ Y ⊕ W₁) ⊕ Z)) → 
   (F : ABox Σ (X ⊕ V₂ ⊕ Y)) → (G : ABox Σ (Y ⊕ W₂ ⊕ Z)) →
     (left * I ⊨b F) → (right * I ⊨b G) → (I ⊨b F ⟫ G)
-⊨b-intro-⟫ {V₂ = V₂} {W₂ = W₂} {Y = Y} (I , i) F G (f , I⊨F) (g , I⊨G) = 
+⊨b-intro-⟫ {V₁} {W₁} {V₂} {W₂} {X} {Y} {Z} (I , i) F G (f , I⊨F) (g , I⊨G) = 
   (h , I⊨F⟫G) where
 
   h : (V₂ ⊕ Y ⊕ W₂) → Δ I
@@ -95,14 +95,14 @@ pipe-exp (J , j) (K , k) (J≲K , j≲k) KB K⊨KB = K⊨KB
   h (bnode y) = i (bnode (bnode y))
   h (enode w) = g w
 
-  lemmaˡ : ∀ x → 
-    I ⊨ on-bnode f (i ∘ left) x ≈ on-bnode h i (left x)
-  lemmaˡ (inode x) = ≈-refl I
-  lemmaˡ (bnode v) = ≈-refl I
-  lemmaˡ (enode y) = ≈-refl I
+  lemmaˡ : (x : X ⊕ V₂ ⊕ Y) →
+            I ⊨  on-bnode {Σ} f (i ∘ left) x ≈ on-bnode {Σ} h i (left x) 
+  lemmaˡ  (inode x) = ≈-refl I
+  lemmaˡ  (bnode v) = ≈-refl I
+  lemmaˡ  (enode y) = ≈-refl I
 
-  lemmaʳ : ∀ x → 
-    I ⊨ on-bnode g (i ∘ right) x ≈ on-bnode h i (right x)
+  lemmaʳ :  (x : Y ⊕ W₂ ⊕ Z) → 
+          I ⊨ on-bnode {Σ} g (i ∘ right) x ≈ on-bnode {Σ} h i (right x)
   lemmaʳ (inode x) = ≈-refl I
   lemmaʳ (bnode v) = ≈-refl I
   lemmaʳ (enode y) = ≈-refl I

@@ -38,7 +38,7 @@ compose-unit₁ {A} {B} F = ( idF⊑F , F⊑idF ) where
     f : BN F → Δ ⌊ I ⌋
     f w = ind I (bnode (enode w))
 
-    f✓ : ∀ x → ⌊ I ⌋ ⊨ ind I (right x) ≈ on-bnode f (ind I) x
+    f✓ : ∀ x → ⌊ I ⌋ ⊨ ind I (right x) ≈ on-bnode {Σ} f (ind I) x
     f✓ (inode x) = ≈-sym ⌊ I ⌋ (identity-elim A (left * I) Iˡ⊨id x)
     f✓ (bnode v) = ≈-refl ⌊ I ⌋
     f✓ (enode y) = ≈-refl ⌊ I ⌋
@@ -58,7 +58,7 @@ compose-unit₁ {A} {B} F = ( idF⊑F , F⊑idF ) where
     Iˡ⊨id = identity-intro A (left * bnodes I f) (λ x → ≈-refl ⌊ I ⌋)
 
     Iʳ⊨F : right * bnodes I f ⊨a impl F
-    Iʳ⊨F = ⊨a-resp-≡³ I (on-bnode f (ind I) ∘ right) refl (impl F) I⊨F
+    Iʳ⊨F = ⊨a-resp-≡³ I (on-bnode {Σ} f (ind I) ∘ right) refl (impl F) I⊨F
 
     I⊨idF : bnodes I f ⊨a impl (identity A ∙ F)
     I⊨idF = compose-resp-⊨a (identity A) F (bnodes I f) Iˡ⊨id Iʳ⊨F 

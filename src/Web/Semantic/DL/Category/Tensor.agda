@@ -66,12 +66,12 @@ F₁ ⟨&⟩ F₂ = (⟨ABox⟩ up F₁ , ⟨ABox⟩ down F₂)
   I⊨F₁F₂ : bnodes I f ⊨a F₁ ⟨&⟩ F₂
   I⊨F₁F₂ = 
     ( ⟨ABox⟩-resp-⊨ up 
-        (≡³-impl-≈ ⌊ I ⌋ (on-bnode f₁ (ind I ∘ up)) 
-          (on-bnode f (ind I) ∘ up) refl) 
+        (≡³-impl-≈ ⌊ I ⌋ (on-bnode {Σ} f₁ (ind I ∘ up)) 
+          (on-bnode {Σ} f (ind I) ∘ up) refl) 
         F₁ I₁⊨F₁
     , ⟨ABox⟩-resp-⊨ down 
-        (≡³-impl-≈ ⌊ I ⌋ (on-bnode f₂ (ind I ∘ down)) 
-          (on-bnode f (ind I) ∘ down) refl) 
+        (≡³-impl-≈ ⌊ I ⌋ (on-bnode {Σ} f₂ (ind I ∘ down)) 
+          (on-bnode {Σ} f (ind I) ∘ down) refl) 
         F₂ I₂⊨F₂ )
 
 go₂ : ∀ {V₁ X₁ X₂ Y₁} → (I : Interp Σ (X₁ ⊎ X₂)) →

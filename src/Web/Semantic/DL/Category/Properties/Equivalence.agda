@@ -44,7 +44,7 @@ module Web.Semantic.DL.Category.Properties.Equivalence
   K⊨H = ⊨b-impl-⊨a (G⊑H J J⊨STA J⊨G)
 
   I⊨H : bnodes I g ⊨a impl H
-  I⊨H = ⊨a-resp-≡³ K (on-bnode g (ind I)) refl (impl H) K⊨H
+  I⊨H = ⊨a-resp-≡³ K (on-bnode {Σ} g (ind I)) refl (impl H) K⊨H
 
 ≣-refl : ∀ {A B : Object S T} (F : A ⇒ B) → (F ≣ F)
 ≣-refl F = (⊑-refl F , ⊑-refl F)

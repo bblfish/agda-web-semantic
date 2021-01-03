@@ -35,15 +35,15 @@ compose-assoc {A} {B} {C} {D} F G H = (LHS⊑RHS , RHS⊑LHS) where
     f (enode (enode w)) = ind I (bnode (enode w))
 
     I⊨F : left * bnodes I f ⊨a impl F
-    I⊨F = ⊨a-resp-≡³ (left * left * I) (on-bnode f (ind I) ∘ left) refl 
+    I⊨F = ⊨a-resp-≡³ (left * left * I) (on-bnode {Σ} f (ind I) ∘ left) refl 
       (impl F) (compose-left F G (left * I) (compose-left (F ∙ G) H I I⊨LHS))
 
     I⊨G : left * right * bnodes I f ⊨a impl G
-    I⊨G = ⊨a-resp-≡³ (right * left * I) (on-bnode f (ind I) ∘ right ∘ left) refl
+    I⊨G = ⊨a-resp-≡³ (right * left * I) (on-bnode {Σ} f (ind I) ∘ right ∘ left) refl
       (impl G) (compose-right F G (left * I) (compose-left (F ∙ G) H I I⊨LHS))
 
     I⊨H : right * right * bnodes I f ⊨a impl H
-    I⊨H = ⊨a-resp-≡³ (right * I) (on-bnode f (ind I) ∘ right ∘ right) refl
+    I⊨H = ⊨a-resp-≡³ (right * I) (on-bnode {Σ} f (ind I) ∘ right ∘ right) refl
       (impl H) (compose-right (F ∙ G) H I I⊨LHS)
 
     I⊨RHS : bnodes I f ⊨a impl (F ∙ (G ∙ H))
@@ -61,15 +61,15 @@ compose-assoc {A} {B} {C} {D} F G H = (LHS⊑RHS , RHS⊑LHS) where
     f (enode w) = ind I (bnode (enode (enode w)))
 
     I⊨F : left * left * bnodes I f ⊨a impl F
-    I⊨F = ⊨a-resp-≡³ (left * I) (on-bnode f (ind I) ∘ left ∘ left) refl
+    I⊨F = ⊨a-resp-≡³ (left * I) (on-bnode {Σ} f (ind I) ∘ left ∘ left) refl
       (impl F) (compose-left F (G ∙ H) I I⊨RHS)
 
     I⊨G : right * left * bnodes I f ⊨a impl G
-    I⊨G = ⊨a-resp-≡³ (left * right * I) (on-bnode f (ind I) ∘ left ∘ right) refl
+    I⊨G = ⊨a-resp-≡³ (left * right * I) (on-bnode {Σ} f (ind I) ∘ left ∘ right) refl
       (impl G) (compose-left G H (right * I) (compose-right F (G ∙ H) I I⊨RHS))
 
     I⊨H : right * bnodes I f ⊨a impl H
-    I⊨H = ⊨a-resp-≡³ (right * right * I) (on-bnode f (ind I) ∘ right) refl
+    I⊨H = ⊨a-resp-≡³ (right * right * I) (on-bnode {Σ} f (ind I) ∘ right) refl
       (impl H) (compose-right G H (right * I) (compose-right F (G ∙ H) I I⊨RHS))
 
     I⊨LHS : bnodes I f ⊨a impl ((F ∙ G) ∙ H)
