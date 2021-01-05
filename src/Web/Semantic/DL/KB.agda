@@ -6,6 +6,8 @@ module Web.Semantic.DL.KB where
 
 infixr 4 _,_
 
+{- A Knowledge Base over a signature and variables/names X
+  consists of a TBox and an ABox -}
 data KB (Σ : Signature) (X : Set) : Set where
   _,_ : (T : TBox Σ) → (A : ABox Σ X) → KB Σ X
 

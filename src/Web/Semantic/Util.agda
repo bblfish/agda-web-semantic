@@ -97,6 +97,7 @@ is! {ℓ} {X} {no ¬x} x = ¬x x
 
 open Data.List.Membership.Propositional  public using () renaming ( _∈_ to _∈ˡ_ )
 
+-- A Finite Set backed by a List
 Finite : Set → Set
 Finite X = ∃ λ xs → ∀ (x : X) → (x ∈ˡ xs)
 
@@ -160,10 +161,15 @@ inj⁻¹ : ∀ {X : Set} → (X ⊎ X) → X
 inj⁻¹ (inj₁ x) = x
 inj⁻¹ (inj₂ x) = x
 
--- A set divided, like Gaul, into three parts
 
 infix 6 _⊕_⊕_
 
+{- A division of nodes X used in an ABox into three types.
+See "Integrity Constraints for Linked Data"
+  + the Imported nodes of an ABox i.e. URIs or URLs defined in another ABox
+  + the Blank Nodes (that cannot be referenced externally)
+  + the Exported Nodes (in RDF those that can be written as relative URLs)
+-}
 data _⊕_⊕_ (X V Y : Set) : Set where
   inode : (x : X) → (X ⊕ V ⊕ Y) -- Imported node
   bnode : (v : V) → (X ⊕ V ⊕ Y) -- Blank node

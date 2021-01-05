@@ -10,6 +10,8 @@ module Web.Semantic.DL.KB.Model {Σ : Signature} {X : Set} where
 
 infixr 2 _⊨_
 
+{- An interpretation entails a knowledge base
+  if it entails the tbox and the abox of the KB -}
 _⊨_ : Interp Σ X → KB Σ X → Set
 I ⊨ K = (⌊ I ⌋ ⊨t tbox K) × (I ⊨a abox K)
 

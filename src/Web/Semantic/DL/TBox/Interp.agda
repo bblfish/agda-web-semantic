@@ -11,7 +11,7 @@ module Web.Semantic.DL.TBox.Interp where
    consists essentially of:
      1. A Domain Δ of intepretation
      2. An equivalence relation on Δ
-     3. An interpretation of Σ
+     3. An interpretation of Σ, i.e. a function from CN and RN to Δ
      4. Proofs that the interpretations respect the Equivalence Relation
    One would use records in Agda 2.6.x
  -}
@@ -24,12 +24,12 @@ data Interp (Σ : Signature) : Set₁ where
     (trans : ∀ {x y z} → (x ≈ y) → (y ≈ z) → (x ≈ z)) → -- proof of transitivity
     (con : CN Σ → Subset Δ) →             -- concept names of signature map
     (rol : RN Σ → Subset (Δ × Δ)) →       -- role name of signature map
-    (con-≈ : ∀ {x y} c → (x ∈ con c) → (x ≈ y) → (y ∈ con c)) →  
+    (con-≈ : ∀ {x y} c → (x ∈ con c) → (x ≈ y) → (y ∈ con c)) →
     (rol-≈ : ∀ {w x y z} r → (w ≈ x) → ((x , y) ∈ rol r) → (y ≈ z) → ((w , z) ∈ rol r)) →
     Interp Σ
 
 {-
- the functions below return some elements of Interp, 
+ the functions below return some elements of Interp,
  which would with Agda 2.6.* be given by the record structure
  -}
 

@@ -10,7 +10,7 @@ module Web.Semantic.DL.ABox where
 infixr 5 _∼_ _∈₁_ _∈₂_
 infixr 4 _,_
 
--- An ABox is defined as a Signature and a set of variables/nodes
+-- An Assertion Box is defined over a Signature and a set of variables/nodes
 data ABox (Σ : Signature) (X : Set) : Set where
   ε : ABox Σ X
   _,_ : (A B : ABox Σ X) → ABox Σ X
