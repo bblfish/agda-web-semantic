@@ -12,11 +12,11 @@ The semantics of RDF and OWL are given as Description Logics,
 formalized in the Web.Semantic.DL library.
 
 An overview of this library can be found in 
-```
-Jeffrey, A. S. A., and Peter F. Patel-Schneider. 
+
+> Jeffrey, A. S. A., and Peter F. Patel-Schneider. 
 ["Integrity constraints for linked data."](http://ceur-ws.org/Vol-745/paper_31.pdf)
 Proc. Int. Workshop Description Logics. 2011.
-```	
+	
 
 The Abstract from the article
 
