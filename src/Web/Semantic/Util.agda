@@ -27,9 +27,15 @@ _∘_ : ∀ {X Y Z : Set} → (Y → Z) → (X → Y) → (X → Z)
 Setoid : Set₁
 Setoid = Relation.Binary.Setoid zero zero
 
+-- Why use Subset rather than Pred from Relation.Unary of stdlib
+-- https://agda.github.io/agda-stdlib/Relation.Unary.html
+-- Does the code require using with-K which is the default ?
 Subset : Set → Set₁
 Subset X = X → Set
 
+-- ⁅ x ⁆ the singleton set
+-- a similar construct is available in Relation.Unary stdlib as {_}
+-- used in order to find provably equivalent representations
 ⁅_⁆ : ∀ {X} → X → Subset X
 ⁅ x ⁆ y = x ≡ y
 

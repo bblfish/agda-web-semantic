@@ -117,6 +117,8 @@ on-bnode f g (inode x) = g (inode x)
 on-bnode f g (bnode w) = f w
 on-bnode f g (enode y) = g (enode y)
 
+-- W : a set of bnodes  so ( W → Δ ⌊ I ⌋ ) is an interpretation of bnodes
+-- replace the interpretation of bnodes on I with the given one
 bnodes : ∀ {V W X Y} → (I : Interp Σ (X ⊕ V ⊕ Y)) → (W → Δ ⌊ I ⌋) → 
   Interp Σ (X ⊕ W ⊕ Y)
 bnodes I f = (⌊ I ⌋ , on-bnode f (ind I))
@@ -133,7 +135,6 @@ bnodes-resp-≲ (I , i) (J , j) (I≲J , i≲j) f = (I≲J , lemma) where
   lemma (enode y) = i≲j (enode y)
 
 -- I ⊨b A whenever there exists an f such that bnodes I f ⊨a A
-
 data _⊨b_ {V W X Y} (I : Interp Σ (X ⊕ V ⊕ Y)) 
   (A : ABox Σ (X ⊕ W ⊕ Y)) : Set where
     _,_ : ∀ f → (bnodes I f ⊨a A) → (I ⊨b A)

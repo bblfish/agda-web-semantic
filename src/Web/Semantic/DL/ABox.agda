@@ -10,6 +10,7 @@ module Web.Semantic.DL.ABox where
 infixr 5 _∼_ _∈₁_ _∈₂_
 infixr 4 _,_
 
+-- An ABox is defined as a Signature and a set of variables/nodes
 data ABox (Σ : Signature) (X : Set) : Set where
   ε : ABox Σ X
   _,_ : (A B : ABox Σ X) → ABox Σ X
@@ -17,6 +18,7 @@ data ABox (Σ : Signature) (X : Set) : Set where
   _∈₁_ : (x : X) → (c : CN Σ) → ABox Σ X
   _∈₂_ : (xy : X × X) → (r : RN Σ) → ABox Σ X
 
+-- An Abox morphism given by a function X → Y on the nodes
 ⟨ABox⟩ : ∀ {Σ X Y} → (X → Y) → ABox Σ X → ABox Σ Y
 ⟨ABox⟩ f ε              = ε
 ⟨ABox⟩ f (A , B)        = (⟨ABox⟩ f A , ⟨ABox⟩ f B)

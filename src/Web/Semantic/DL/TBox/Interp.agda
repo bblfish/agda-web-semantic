@@ -7,8 +7,14 @@ open import Web.Semantic.Util using ( Setoid ; Subset ; _∘_ ; False )
 
 module Web.Semantic.DL.TBox.Interp where
 
-{- an interpretation of a Signature
-   one would use records in Agda 2.6.x -}
+{- TBox interpretation of a Signature Σ
+   consists essentially of:
+     1. A Domain Δ of intepretation
+     2. An equivalence relation on Δ
+     3. An interpretation of Σ
+     4. Proofs that the interpretations respect the Equivalence Relation
+   One would use records in Agda 2.6.x
+ -}
 data Interp (Σ : Signature) : Set₁ where
   interp :
     (Δ : Set) → -- The Domain of Interpretation (e.g. representing real objects in the world)

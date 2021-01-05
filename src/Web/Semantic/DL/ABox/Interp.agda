@@ -11,9 +11,12 @@ infixr 4 _,_
 infixr 5 _*_ 
 
 {-
-   An interpretation of a signature Σ (made of concept and role names) 
-   over a set of variables/names taken from X
-   In RDF the members of X are  IRIs, BNodes or Literals.
+   An ABox interpretation of a signature Σ (made of concept and role names)
+   over a set X of individuals consists of
+    - a TBox interpreation I
+    - a mapping from X do Δ I, the domain of interpretation of I
+   Note: In RDF the members of X are  sets of IRIs, BNodes or Literals, but
+   IRIs can also refer to TBox elements.
 -}
 data Interp (Σ : Signature) (X : Set) : Set₁ where
   -- I is a full Interpreation (Interp')

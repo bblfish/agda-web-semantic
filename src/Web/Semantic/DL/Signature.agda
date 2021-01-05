@@ -2,6 +2,7 @@ module Web.Semantic.DL.Signature where
 
 infixr 4 _,_
 
+-- a Signature is constructed from Concept Names and Role/Relation Names
 data Signature : Set₁ where
   _,_ : (CN RN : Set) → Signature
 
