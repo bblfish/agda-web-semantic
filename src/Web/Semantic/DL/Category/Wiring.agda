@@ -1,5 +1,5 @@
 open import Data.List using ( List ; [] ; _∷_ )
-open import Data.List.Any using ( here ; there )
+open import Data.List.Relation.Unary.Any using ( here ; there )
 open import Data.Product using ( _,_ ; proj₁ ; proj₂ )
 open import Data.Sum using ( inj₁ ; inj₂ )
 open import Relation.Binary.PropositionalEquality using
